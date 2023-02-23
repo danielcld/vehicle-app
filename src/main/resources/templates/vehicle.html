@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vehicle.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+
+<div class="container">
+
+    <div class="title">
+        <span th:text="${vehicle.name}"> Name </span></tr>
+    </div>
+
+    <table class="vehicle-info">
+        <thead>
+        <tr>
+            <th>Informacje o pojeździe</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr>
+            <td>Marka:</td>
+            <td><span th:text="${vehicle.brand}"> Marka </span></td>
+            <td>Rok produkcji:</td>
+            <td><span th:text="${vehicle.productionYear}"> Rok produkcji </span></td>
+        </tr>
+        <tr>
+            <td>Model:</td>
+            <td><span th:text="${vehicle.model}"> Model </span></td>
+            <td>Numer vin:</td>
+            <td><span th:text="${vehicle.vinNumber}"> Numer vin </span></td>
+        </tr>
+        <tr>
+            <td>Przebieg:</td>
+            <td><span th:text="${vehicle.mileage}"> Przebieg </span></td>
+            <td>Pojemność silnika:</td>
+            <td><span th:text="${vehicle.engineCapacity}"> Pojemnosc silnika </span></td>
+
+        </tr>
+        <tr>
+            <td>Rodzaj paliwa:</td>
+            <td><span th:text="${vehicle.fuelType}"> Rodzaj paliwa </span></td>
+            <td>Moc silnika:</td>
+            <td><span th:text="${vehicle.enginePower}"> Moc silnika </span></td>
+
+        </tr>
+        <tr>
+            <td>Numer rejestracyjny:</td>
+            <td><span th:text="${vehicle.registrationNumber}"> Numer rejstracyjny </span></td>
+            <td>Pierwsza rejestracja:</td>
+            <td><span th:text="${vehicle.firstRegistration}"> Pierwsza rejestracja </span></td>
+        </tr>
+        <td><a th:href="@{'/vehicles/'}">Pozostałe pojazdy</a></td>
+        <td><a th:href="@{'/vehicle/'+${vehicle.id}+'/reminder'}">Dodaj powiadomienia</a></td>
+        <td><a th:href="@{'/vehicle/'+${vehicle.id}+'/editvehicle'}">Edytuj pojazd</a></td>
+        <td><a th:href="@{'/vehicle/'+${vehicle.id}+'/delete'}">Usuń pojazd</a></td>
+        <tr>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="repairs">
+    <div class="title">
+        Wpisy serwisowe
+    </div>
+
+    <table class="repair-info">
+
+        <thead>
+        <tr>
+            <th>Opis</th>
+            <th>Koszt</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${repairs.empty}">
+            <td colspan="2">brak wpisów</td>
+        </tr>
+        <tr th:each="repair : ${repairs}">
+            <td><span th:text="${repair.description}">Opis</span></td>
+            <td><span th:text="${repair.cost}">Koszt</span></td>
+            <td><span th:text="${repair.date}">Data</span></td>
+        </tr>
+        <td><a th:href="@{'/vehicle/'+${vehicle.id}+'/repair'}">Dodaj wpis</a></td>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

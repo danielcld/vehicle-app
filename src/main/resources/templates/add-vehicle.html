@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodawanie pojazdu</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="#" th:action="@{/addvehicle}" th:object="${vehicle}" method="post"
+                  class="form-horizontal" role="form">
+                <h2>Dodawanie pojazdu</h2><br>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="name">Nazwa</label>
+                        <input type="text" th:field="*{name}" id="name" placeholder="Nazwa"
+                               class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="registrationNumber">Numer rejestracyjny</label>
+                        <input type="text" th:field="*{registrationNumber}" id="registrationNumber"
+                               placeholder="Numer rejestracyjny"
+                               class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="firstRegistration">Pierwsza rejestracja</label>
+                        <input type="text" th:field="*{firstRegistration}" id="firstRegistration"
+                               placeholder="dd.mm.yyyy"
+                               class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="vinNumber">Numer vin</label>
+                        <input type="text" th:field="*{vinNumber}" id="vinNumber" placeholder="Numer vin"
+                               class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Dodaj pojazd</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

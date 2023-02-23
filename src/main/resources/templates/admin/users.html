@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panel Administracyjny</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/adminpanel.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+<div class="container">
+
+    <div class="title">
+        Lista użytkowników
+    </div>
+
+
+
+<table class = "styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Akcja</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <th:block th:each="user : ${users}">
+
+            <tr>
+                <td>
+                    <span th:text="${user.id}"></span></a>
+                </td>
+                <td>
+                    <span th:text="${user.userName}"></span></a>
+                </td>
+                <td>
+                    <span th:text="${user.name}"></span></a>
+                </td>
+                <td>
+                    <span th:text="${user.lastName}"></span></a>
+                </td>
+                <td>
+                    <span th:text="${user.email}"></span></a>
+                </td>
+                <td>
+                    <a th:href="@{'/admin/deleteuser/'+${user.id}}">Usuń konto</a>
+                </td>
+
+            </tr>
+
+        </th:block>
+    </tbody>
+</table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add reminder</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/reminder.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="#" th:action="@{addreminder}" th:object="${reminder}" method="post" class="form-horizontal"
+                  role="form">
+
+                <h2>Dodaj powiadomienia</h2><br>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="checkbox" name="active" th:checked="${reminder.active}"/>
+                        <label for="active">Wysyłaj wiadomości email</label>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <input type="checkbox" name="inspection" th:checked="${reminder.inspection}"/>
+                            <label for="inspection">Przegląd techniczny</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <input type="checkbox" name="insurance" th:checked="${reminder.insurance}"/>
+                            <label for="insurance">Koniec ubezpieczenia</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Zapisz zmiany</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

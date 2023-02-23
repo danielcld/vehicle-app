@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit vehicle</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="#" th:action="@{addedit}" th:object="${vehicle}" method="post"
+                  class="form-horizontal" role="form">
+                <h2>Edytuj pojazd</h2>
+
+
+                <input type="hidden" th:field="*{id}" id="id" class="form-control">
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="model">Nazwa</label>
+                        <input type="text" th:field="*{name}" id="name" placeholder="Name"
+                               class="form-control">
+
+
+                        <label for="model">Marka</label>
+                        <input type="text" th:field="*{brand}" id="brand" placeholder="Brand"
+                               class="form-control">
+
+
+                        <label for="model">Model</label>
+                        <input type="text" th:field="*{model}" id="model" placeholder="Model"
+                               class="form-control">
+
+                        <label for="production_year">Rok produkcji</label>
+                        <input type="text" th:field="*{productionYear}" id="production_year"
+                               placeholder="Production year"
+                               class="form-control">
+
+
+                        <label for="mileage">Przebieg</label>
+                        <input type="text" th:field="*{mileage}" id="mileage" placeholder="mileage"
+                               class="form-control">
+
+
+                        <label for="registrationNumber">Number rejestracyjny</label>
+                        <input type="text" th:field="*{registrationNumber}" id="registrationNumber"
+                               placeholder="Registration Number"
+                               class="form-control">
+
+
+                        <label for="firstRegistration">Pierwsza rejestracja</label>
+                        <input type="text" th:field="*{firstRegistration}" id="firstRegistration"
+                               placeholder="dd.mm.yyyy"
+                               class="form-control">
+
+
+                        <label for="vinNumber">Numer vin</label>
+                        <input type="text" th:field="*{vinNumber}" id="vinNumber" placeholder="vinNumber"
+                               class="form-control">
+
+                        <input type="hidden" th:field="*{engineCapacity}" id="engineCapacity" class="form-control">
+                        <input type="hidden" th:field="*{enginePower}" id="enginePower" class="form-control">
+                        <input type="hidden" th:field="*{fuelType}" id="fuelType" class="form-control">
+                        <input type="hidden" th:field="*{vehicleWeight}" id="vehicleWeight" class="form-control">
+                        <input type="hidden" th:field="*{insuranceDate}" id="insuranceDate" class="form-control">
+                        <input type="hidden" th:field="*{insuranceStatus}" id="insuranceStatus" class="form-control">
+                        <input type="hidden" th:field="*{inspectionDate}" id="inspectionDate" class="form-control">
+                        <input type="hidden" th:field="*{inspectionStatus}" id="inspectionStatus" class="form-control">
+
+
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 30px">Zapisz zmiany
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

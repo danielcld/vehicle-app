@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <form action="#" th:action="@{addrepair}" th:object="${repair}" method="post"
+                  class="form-horizontal" role="form">
+
+                <h2>Dodaj nowy wpis<br></h2>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="date">Data</label>
+                        <input type="date" th:field="*{date}" id="Date" placeholder="Date" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="description">Opis</label>
+                        <textarea th:field="*{description}" placeholder="Opis wykonanych czynności" class="form-control"
+                                  id="exampleFormControlTextarea1" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label for="cost">Koszt</label>
+                        <input type="text" th:field="*{cost}" id="cost" placeholder="1000" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Dodaj wpis</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

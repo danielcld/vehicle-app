@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Twoje pojazdy</title>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vehicle-list.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<ul>
+    <li><a class="active" href="/vehicles">Strona główna</a></li>
+
+    <li style="float:right"><a href="/logout">Wyloguj</a></li>
+    <li style="float:right"><a href="/user/edituser">Edytuj konto</a></li>
+
+    <div class="row" sec:authorize="hasAuthority('ADMIN')">
+        <li style="float:right"><a href="/admin/users">Admin panel</a></li>
+    </div>
+</ul>
+
+
+<div class="center">
+
+
+    <div style="margin-bottom: 50px">
+        <h1>Twoje pojazdy:</h1>
+    </div>
+
+    <tr th:if="${vehicles.empty}">
+
+        <p>Niestety nie posiadasz żadnego pojazdu. Dodaj nowy korzystając z przycisku poniżej</p>
+
+
+    </tr>
+    <center>
+        <table style="border-spacing: 10px">
+            <th:block th:each="vehicle : ${vehicles}">
+
+                <td>
+
+                    <img th:src="@{/images/car-icon3.png}" width="100" height="100" alt="Icon"/>
+
+                    <div style="text-align: center">
+                        <a th:href="@{'/vehicle/'+${vehicle.id}}"><span th:text="${vehicle.name}"></span></a>
+                    </div>
+
+                </td>
+
+            </th:block>
+        </table>
+    </center>
+
+
+    <div style="margin-top: 50px">
+
+        <h2><a th:href="@{'/addvehicle/'}">
+            <button class="btn btn-primary btn-block">Dodaj pojazd</button>
+        </a></h2>
+    </div>
+
+</div>
+
+</body>
+</html>
